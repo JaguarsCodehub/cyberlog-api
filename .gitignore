@@ -1,9 +1,5 @@
-# Client
-client/node_modules
-client/.next
-client/.env
-client/.eslintrc.json
-client/package-lock.json
+
+
 
 # Server
 server/node_modules
