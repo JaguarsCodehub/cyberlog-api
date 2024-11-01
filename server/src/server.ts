@@ -23,7 +23,7 @@ app.get('/api/domains/search', async (req: Request, res: Response) => {
     //   return res.status(400).json({ error: 'Search query is required' });
     // }
 
-    const domains = await prisma.domain.findMany({
+    const domains = await prisma.accounts.findMany({
       where: {
         domain: {
           contains: query.toLowerCase(),
@@ -43,28 +43,28 @@ app.get('/api/domains/search', async (req: Request, res: Response) => {
 });
 
 
-app.get('/api/domains/:id', async (req: Request<DomainParams>, res: Response) => {
-  try {
-    const id = parseInt(req.params.id, 10);
+// app.get('/api/domains/:id', async (req: Request<DomainParams>, res: Response) => {
+//   try {
+//     const id = parseInt(req.params.id, 10);
 
-    // if (isNaN(id)) {
-    //   return res.status(400).json({ error: 'Invalid domain ID' });
-    // }
+//     // if (isNaN(id)) {
+//     //   return res.status(400).json({ error: 'Invalid domain ID' });
+//     // }
 
-    const domain = await prisma.domain.findUnique({
-      where: { id },
-    });
+//     const domain = await prisma.accounts.findUnique({
+//       where: { id },
+//     });
 
-    // if (!domain) {
-    //   return res.status(404).json({ error: 'Domain not found' });
-    // }
+//     // if (!domain) {
+//     //   return res.status(404).json({ error: 'Domain not found' });
+//     // }
 
-    res.json(domain);
-  } catch (error) {
-    console.error('Error fetching domain:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
+//     res.json(domain);
+//   } catch (error) {
+//     console.error('Error fetching domain:', error);
+//     res.status(500).json({ error: 'Internal server error' });
+//   }
+// });
 
 
 app.listen(port, () => {
